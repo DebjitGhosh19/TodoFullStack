@@ -3,7 +3,8 @@ import { ToDo } from "../model/todoModel.js";
 export const createToDo=async(req,res)=>{
   const todo=new ToDo({
     text:req.body.text,
-    completed:req.body.completed
+    completed:req.body.completed,
+    user:req.body.user
   })
 try {
   const newTodo=await todo.save()
@@ -13,4 +14,32 @@ try {
   res.status(400).json({message:"Error occuring create todo",error})
   console.log(error);
 }
+}
+
+
+export const getTodo=async (req,res)=>{
+  try {
+    const todos=await ToDo.find()
+    res.status(201).json({message:"Todo fetch successfully",todos})
+  } catch (error) {
+    res.status(401).json({message:"Error occuring fetching todo"},error)
+  }
+}
+
+export const deleteTodo=async (req,res) => {
+  try {
+    const todo=await ToDo.findByIdAndDelete(req.params.id);
+    res.status(201).json({message:"Todo delete successfully",todo});
+  } catch (error) {
+    res.status(401).json({message:"Error occuring delete todo"},error);
+
+  }
+}
+export const editTodo=async (req,res) => {
+  try {
+    const todo=await ToDo.findByIdAndUpdate(req.params.id,req.body,{new:true})
+    res.status(201).json({message:"Todo updated successfully",todo});
+  } catch (error) {
+    res.status(401).json({message:"Error occuring update todo"},error);
+  }
 }
