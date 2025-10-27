@@ -12,9 +12,6 @@ app.use(express.urlencoded({ extended: true }))
 dotenv.config();
  DbConnect();
  
- app.get("/",(req,res)=>{
-  res.send("Wlcome")
- })
  app.use('/todo/api/',TodoRouter)
  app.use('/user/api/',UserRouter)
 

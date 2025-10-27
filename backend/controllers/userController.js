@@ -48,3 +48,6 @@ export const signin = async (req, res) => {
     message:"User successfully login"
   })
 };
+export const signout=async (req,res) => {
+  
+}
