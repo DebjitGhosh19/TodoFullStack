@@ -12,8 +12,8 @@ app.use(express.urlencoded({ extended: true }))
 dotenv.config();
  DbConnect();
  
- app.use('/todo/api/',TodoRouter)
- app.use('/user/api/',UserRouter)
+ app.use('/todo/api',TodoRouter)
+ app.use('/user/api',UserRouter)
 
  const port=process.env.PORT||5000
  app.listen(port,()=>{

@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Todos from './components/todos'
 import Signup from './components/Signup'
 import Signin from './components/Signin'
-
+export const backendUrl="http://localhost:4000"
 const App = () => {
   return (
    <>
